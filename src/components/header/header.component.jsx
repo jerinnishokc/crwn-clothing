@@ -4,8 +4,10 @@ import { ReactComponent as Logo } from '../../assets/crown.svg';
 import './header.styles.scss';
 import { auth } from '../../firebase/firebase.util';
 import { connect } from 'react-redux';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-const Header = ({ history, currentUser }) => {
+const Header = ({ history, currentUser, hidden }) => {
   console.log('Header component: ', currentUser);
   return (
     <div className="header">
@@ -31,15 +33,19 @@ const Header = ({ history, currentUser }) => {
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </div>
+      {!hidden ? <CartDropdown /> : null}
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log('mapStateToProps- ', state);
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => {
+  // console.log('mapStateToProps- ', state);
   return {
-    currentUser: state.user.currentUser,
+    currentUser,
+    hidden,
   };
 };
+
 export default connect(mapStateToProps)(withRouter(Header));

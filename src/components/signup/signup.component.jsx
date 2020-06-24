@@ -88,19 +88,21 @@ class SignUp extends React.Component {
             label="confirm password"
             required
           />
-          <CustomButton type="submit">REGISTER</CustomButton>
-          <CustomButton
-            onClick={() =>
-              this.setState({
-                displayName: '',
-                email: '',
-                password: '',
-                confirmPassword: '',
-              })
-            }
-          >
-            CLEAR
-          </CustomButton>
+          <div className="button-grp">
+            <CustomButton type="submit">REGISTER</CustomButton>
+            <CustomButton
+              onClick={() =>
+                this.setState({
+                  displayName: '',
+                  email: '',
+                  password: '',
+                  confirmPassword: '',
+                })
+              }
+            >
+              CLEAR
+            </CustomButton>
+          </div>
         </form>
       </div>
     );

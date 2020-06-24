@@ -2,4 +2,10 @@
   width: 380px;
   display: flex;
   flex-direction: column;
+
+  .button-grp {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
