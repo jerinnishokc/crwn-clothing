@@ -17,8 +17,11 @@ const mapDispatchToProps = (dispatch) => ({
   toggleCartDropdown: () => dispatch(toggleCartDropdown()),
 });
 
-const mapStateToProps = ({ cart: { totalItems } }) => ({
-  totalItems,
-});
+const mapStateToProps = ({ cart: { totalItems } }) => {
+  console.log('Cart-icon called!!!');
+  return {
+    totalItems,
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
