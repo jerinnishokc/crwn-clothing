@@ -8,14 +8,8 @@ import SignInSignUp from './pages/signIn-signUp/signIn-signUp.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.util';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
-
-// const HatsApp = (props) => {
-//   return (
-//     <div>
-//       <h1>Hats Page</h1>
-//     </div>
-//   );
-// };
+import { getCurrentUser } from './redux/user/user.selectors';
+import { createStructuredSelector } from 'reselect';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -71,8 +65,8 @@ const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-const mapStateToProps = ({ user: { currentUser } }) => ({
-  currentUser,
+const mapStateToProps = createStructuredSelector({
+  currentUser: getCurrentUser,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
