@@ -1,8 +1,15 @@
 import React from 'react';
 import CustomButton from '../custom-button/custom-button.component';
 import FormItem from '../form-item/form-item.component';
-import './signup.styles.scss';
+// import './signup.styles.scss';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.util';
+import {
+  SignUpContainer,
+  TitleContainer,
+  SubtitleContainer,
+  FormContainer,
+  ButtonContainer,
+} from './signup.styles';
 
 class SignUp extends React.Component {
   constructor() {
@@ -52,10 +59,12 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div className="signUp">
-        <h2>I don't have an account</h2>
-        <span>Sign up with your email and password</span>
-        <form onSubmit={this.handleSubmit}>
+      <SignUpContainer>
+        <TitleContainer>I don't have an account</TitleContainer>
+        <SubtitleContainer>
+          Sign up with your email and password
+        </SubtitleContainer>
+        <FormContainer onSubmit={this.handleSubmit}>
           <FormItem
             handleChange={this.handleChange}
             name="displayName"
@@ -88,7 +97,7 @@ class SignUp extends React.Component {
             label="confirm password"
             required
           />
-          <div className="button-grp">
+          <ButtonContainer>
             <CustomButton type="submit">REGISTER</CustomButton>
             <CustomButton
               onClick={() =>
@@ -102,9 +111,9 @@ class SignUp extends React.Component {
             >
               CLEAR
             </CustomButton>
-          </div>
-        </form>
-      </div>
+          </ButtonContainer>
+        </FormContainer>
+      </SignUpContainer>
     );
   }
 }

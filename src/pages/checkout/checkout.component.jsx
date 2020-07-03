@@ -5,42 +5,51 @@ import {
   selectedCartItems,
   selectCartTotal,
 } from '../../redux/cart/cart.selectors';
-import './checkout.styles.scss';
+// import './checkout.styles.scss';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
-import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
+// import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
+import {
+  CheckoutPageContainer,
+  CheckoutHeaderContainer,
+  HeaderBlockContainer,
+  TotalContainer,
+  TestWarningContainer,
+  GenericSpanContainer,
+  StripeButtonContainer,
+} from './checkout.styles';
 
 const Checkout = ({ cartItems, total }) => (
-  <div className="checkout-page">
-    <div className="checkout-header">
-      <div className="header-block">
-        <span>Product</span>
-      </div>
-      <div className="header-block">
-        <span>Description</span>
-      </div>
-      <div className="header-block">
-        <span>Quantity</span>
-      </div>
-      <div className="header-block">
-        <span>Price</span>
-      </div>
-      <div className="header-block">
-        <span>Remove</span>
-      </div>
-    </div>
+  <CheckoutPageContainer>
+    <CheckoutHeaderContainer>
+      <HeaderBlockContainer>
+        <GenericSpanContainer>Product</GenericSpanContainer>
+      </HeaderBlockContainer>
+      <HeaderBlockContainer>
+        <GenericSpanContainer>Description</GenericSpanContainer>
+      </HeaderBlockContainer>
+      <HeaderBlockContainer>
+        <GenericSpanContainer>Quantity</GenericSpanContainer>
+      </HeaderBlockContainer>
+      <HeaderBlockContainer>
+        <GenericSpanContainer>Price</GenericSpanContainer>
+      </HeaderBlockContainer>
+      <HeaderBlockContainer>
+        <GenericSpanContainer>Remove</GenericSpanContainer>
+      </HeaderBlockContainer>
+    </CheckoutHeaderContainer>
     {cartItems.map((item) => (
       <CheckoutItem key={item.id} checkoutItem={item} />
     ))}
-    <div className="total">
-      <span>TOTAL: ${total}</span>
-    </div>
-    <div className="test-warning">
+    <TotalContainer>
+      <GenericSpanContainer>TOTAL: ${total}</GenericSpanContainer>
+    </TotalContainer>
+    <TestWarningContainer>
       *Please use the following test credit card for payments*
       <br />
       4242 4242 4242 4242 - Exp:06/20 - CVV
-    </div>
-    <StripeCheckoutButton price={total} />
-  </div>
+    </TestWarningContainer>
+    <StripeButtonContainer price={total}></StripeButtonContainer>
+  </CheckoutPageContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
