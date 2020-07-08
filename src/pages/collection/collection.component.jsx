@@ -10,6 +10,7 @@ import {
 } from './collection.styles';
 
 const CollectionPage = ({ collectionItem }) => {
+  console.log("Collection Page is rendered");
   const { title, items } = collectionItem;
 
   return (
